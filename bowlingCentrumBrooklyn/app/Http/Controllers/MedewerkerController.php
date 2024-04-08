@@ -14,18 +14,38 @@ class MedewerkerController extends Controller
 {
     public function index()
     {
-        $users = Persoon::all();
-        $reservering = Reservering::find($users);
-        $game = Spel::find($reservering);
-        $point = Uitslag::find($game);
-  
         $result = DB::select("SELECT P.voornaam, P.tussenvoegsel, P.achternaam, U.aantalPunten, R.id 
                             FROM persoons P, uitslags U, reserverings R 
-                            WHERE P.id = U.id AND P.id = R.id");
+                            WHERE P.id = U.id 
+                            AND P.id = R.id
+                            ORDER BY U.aantalPunten");
+
         return view('medewerker.dashboard', [
             'result' => $result,
         ]);
+    }
 
-        
+    public function edit($id)
+    {
+        $result = Spel::find($id);
+        $points = Uitslag::find($result->id);
+        return view('medewerker.edit', [
+            'points' => $points,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $validated = $request->validate([
+            'aantalpunten' => 'required|numeric|min:0|max:300',
+        ]);
+
+        $points = Uitslag::find($id);
+        $points->aantalPunten = $request->aantalpunten;
+        $points->update([
+            'aantalPunten' => $request->aantalpunten,
+        ]);
+        return redirect('medewerker/dashboard');
     }
 }

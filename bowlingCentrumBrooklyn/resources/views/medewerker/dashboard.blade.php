@@ -19,12 +19,9 @@
            
             <tr>
                 <td>{{ $result->voornaam }} {{ $result->tussenvoegsel }} {{ $result->achternaam }}</td>
-               
                 <td>{{ $result->aantalPunten }}</td>
-               
                 <td>{{ $result->id }}</td>
-               
-                <td></td>
+                <td><a href="medewerker/{{ $result->id }}/edit"><img src="{{ asset('img/edit.png') }}" alt="edit"></a></td>
             </tr>
             @endforeach
            

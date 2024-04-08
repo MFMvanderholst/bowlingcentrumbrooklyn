@@ -27,7 +27,9 @@ Route::get('/dashboard', function () {
 Route::get('user/dashboard', [UserController::class, 'index'])->name('user/dashboard');
 Route::get('user/show/{date}', [UserController::class, 'show']);
 
-Route::get('medewerker/dashboard', [MedewerkerController::class, 'index'])->name('medewerker/dashboard');
+Route::get('medewerker/dashboard', [MedewerkerController::class, 'index']);
+Route::get('medewerker/medewerker/{id}/edit', [MedewerkerController::class, 'edit']);
+Route::put('medewerker/medewerker/{id}/medewerker/{code}', [MedewerkerController::class, 'update']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
