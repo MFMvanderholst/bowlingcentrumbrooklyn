@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Uitslag extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'spelId',
+        'aantalPunten',
+    ];
 }

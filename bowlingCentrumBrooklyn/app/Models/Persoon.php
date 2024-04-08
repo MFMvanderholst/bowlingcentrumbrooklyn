@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Persoon extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'typePersoonId',
+        'voornaam',
+        'tussenvoegsel',
+        'achternaam',
+        'roepnaam',
+        'isVolwassen',
+    ];
 }

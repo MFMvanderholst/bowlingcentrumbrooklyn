@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Personen', function (Blueprint $table) {
+        Schema::create('persoons', function (Blueprint $table) {
             $table->id();
             $table->foreignId('typePersoonId');
             $table->string('voornaam');
-            $table->string('tussenvoegsel');
+            $table->string('tussenvoegsel')->nullable();
             $table->string('achternaam');
             $table->string('roepnaam');
             $table->boolean('isVolwassen');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Personen');
+        Schema::dropIfExists('persoons');
     }
 };

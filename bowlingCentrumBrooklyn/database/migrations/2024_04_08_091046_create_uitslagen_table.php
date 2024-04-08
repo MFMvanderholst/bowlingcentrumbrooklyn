@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Reserveringen', function (Blueprint $table) {
+        Schema::create('uitslags', function (Blueprint $table) {
             $table->id();
             $table->foreignId('spelId');
             $table->integer('aantalPunten');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Reserveringen');
+        Schema::dropIfExists('uitslags');
     }
 };

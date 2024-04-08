@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Spel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'persoonId',
+        'reserveringId',
+    ];
 }
