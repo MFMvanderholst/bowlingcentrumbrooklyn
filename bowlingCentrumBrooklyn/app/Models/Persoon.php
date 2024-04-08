@@ -17,4 +17,5 @@ class Persoon extends Model
         'roepnaam',
         'isVolwassen',
     ];
+
 }

@@ -25,4 +25,9 @@ class Reservering extends Model
         'aantalKinderen',
 
     ];
+
+    public function persoon()
+    {
+        return $this->belongsTo(Persoon::class, 'persoonId');
+    }
 }

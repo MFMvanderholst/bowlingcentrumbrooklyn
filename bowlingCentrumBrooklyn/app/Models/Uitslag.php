@@ -13,4 +13,9 @@ class Uitslag extends Model
         'spelId',
         'aantalPunten',
     ];
+
+    public function spel()
+    {
+        return $this->belongsTo(Spel::class, 'spelId');
+    }
 }

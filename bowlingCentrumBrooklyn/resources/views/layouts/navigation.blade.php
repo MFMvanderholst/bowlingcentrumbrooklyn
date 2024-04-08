@@ -16,6 +16,24 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <!-- if user is medewerker show medewerker table-->
+                @if (Auth::user()->isMedewerker == 1)
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('medewerker/dashboard')" :active="request()->routeIs('medewerker/dashboard')">
+                        {{ __('Medewerker') }}
+                    </x-nav-link>
+                </div>
+                <!-- if user is not medewerker show user table-->
+                @else
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('user/dashboard')" :active="request()->routeIs('user/dashboard')">
+                        {{ __('Uitslag') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -42,8 +60,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -88,8 +105,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

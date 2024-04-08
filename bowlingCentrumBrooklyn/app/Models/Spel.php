@@ -13,4 +13,14 @@ class Spel extends Model
         'persoonId',
         'reserveringId',
     ];
+
+    public function persoon()
+    {
+        return $this->belongsTo(Persoon::class, 'persoonId');
+    }
+
+    public function reservering()
+    {
+        return $this->hasMany(Reservering::class, 'reserveringId');
+    }
 }

@@ -31,6 +31,12 @@ return new class extends Migration
                 ->references('id')
                 ->on('spels');
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('persoonId')
+                ->references('id')
+                ->on('persoons');
+        });
     }
 
     /**

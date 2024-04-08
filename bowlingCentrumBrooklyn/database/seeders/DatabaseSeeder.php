@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ReserveringSeeder::class);
         $this->call(SpelSeeder::class);
         $this->call(UitslagSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
